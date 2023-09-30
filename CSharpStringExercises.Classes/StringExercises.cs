@@ -5,7 +5,6 @@ namespace CSharpStringExercises.Classes
 {
 	public class StringExercises
 	{
-
 		// 1: Pig Latin
 		// Move the first letter of each word to the end of it, then add "ay" to the end of the word. 
 		// Leave punctuation marks untouched.
@@ -15,43 +14,7 @@ namespace CSharpStringExercises.Classes
 		// There are already some unit tests for this function
 		public static string PigLatin(string input)
 		{
-			string[] words = input.Split(' ');
-			for (int i = 0; i< words.Length; i++)
-			{
-				int wordEnd = FindLastIndexNotPunctuation(words[i]);
-				int firstLetter = FindFirstIndexNotPunctuation(words[i]);
-				if (wordEnd != -1)
-				{
-					string newWord = words[i].Insert(wordEnd + 1, words[i][firstLetter] + "ay");
-					newWord = newWord.Remove(firstLetter, 1);
-					words[i] = newWord;
-				}
-			}
-			return string.Join(" ", words);
-		}
-
-		private static int FindLastIndexNotPunctuation(string input)
-		{
-			for (int i = input.Length - 1; i >= 0; i--) // Backwards through loop
-			{
-				if (!char.IsPunctuation(input[i]))
-				{
-					return i;
-				}
-			}
-			return -1;
-		}
-
-		private static int FindFirstIndexNotPunctuation(string input)
-		{
-			for (int i = 0; i < input.Length; i++) // Forwards through loop
-			{
-				if (!char.IsPunctuation(input[i]))
-				{
-					return i;
-				}
-			}
-			return -1;
+			throw new NotImplementedException();
 		}
 
 		// 2. Mexican wave
@@ -62,17 +25,7 @@ namespace CSharpStringExercises.Classes
 		// Write some unit tests for this function
 		public static List<string> Wave(string input)
 		{
-			List<string> wave = new List<string>();
-			for (int i = 0; i<input.Length; i++)
-			{
-				StringBuilder sb = new(input); // Easy to change a string using a string builder
-				if (!char.IsWhiteSpace(sb[i]))
-				{
-					sb[i] = char.ToUpper(sb[i]); // Can access the string builder by index
-					wave.Add(sb.ToString());
-				}				
-			}
-			return wave;
+			throw new NotImplementedException();
 		}
 
 		// 3: Hello character codes - Convert to integer character codes
@@ -81,18 +34,12 @@ namespace CSharpStringExercises.Classes
 		// Test this procedure by calling it from main
 		public static void WriteHelloCharacterCodes()
 		{
-			Write("Hello", "Hello");
-			Write("你好", "Nihao");
+			throw new NotImplementedException();
 		}
 
 		private static void Write(string input, string message)
 		{
-			Console.Write($"{message} is :");
-			foreach (char c in input)
-			{
-				Console.Write($"{(int)c} ");
-			}
-			Console.WriteLine();
+			throw new NotImplementedException();
 		}
 
 		// 4: Hello character codes - Convert to a byte array
@@ -105,17 +52,7 @@ namespace CSharpStringExercises.Classes
 		// Test this procedure by calling it from main
 		public static void WriteHelloAsBytes()
 		{
-			string hello = "Hello";
-			byte[] helloBytes = Encoding.Default.GetBytes(hello);
-			Console.Write("Hello is :");
-			Console.WriteLine(string.Join(",", helloBytes));
-
-			string nihao = "你好";
-			byte[] nihaoBytes = Encoding.Default.GetBytes(nihao);
-			Console.Write("Nihao is :");
-			Console.WriteLine(string.Join(",", nihaoBytes));
-
-			Console.WriteLine();
+			throw new NotImplementedException();
 		}
 
 
@@ -127,12 +64,7 @@ namespace CSharpStringExercises.Classes
 		// Write unit tests for this function
 		public static string ReadCharacterCodes(int[] codes)
 		{
-			StringBuilder sb = new();
-			foreach (char code in codes)
-			{
-				sb.Append(code);
-			}
-			return sb.ToString();
+			throw new NotImplementedException();
 		}
 
 		// 6. Character codes - convert character codes given as a byte array to a string
@@ -141,8 +73,8 @@ namespace CSharpStringExercises.Classes
 		// It might not print nicely to the console but you can inspect the variable, use an assert or write a test
 		// Write unit tests for this function
 		public static string ReadCharacterCodes(byte[] codes)
-		{			
-			return Encoding.Default.GetString(codes);
+		{
+			throw new NotImplementedException();
 		}
 
 		// 7. Anagram
@@ -151,26 +83,9 @@ namespace CSharpStringExercises.Classes
 		// Write unit tests for this function
 		public static int Anagram(string input, string[] possibleAnagrams)
 		{
-			string sorted = SortString(input);
-			int count = 0;
-			foreach (string value in possibleAnagrams )
-			{
-				string sortedValue = SortString(value);
-				if (sorted.Equals(sortedValue, StringComparison.CurrentCultureIgnoreCase))
-				{
-					count++;
-				}
-			}
-			return count;
+			throw new NotImplementedException();
 		}
-
-		private static string SortString(string input)
-		{
-			char[] charArray = input.ToCharArray();
-			Array.Sort(charArray);
-			return new string(charArray);
-		}
-
+				
 		// 8. Variable Name helper
 		public enum VariableNameType
 		{
@@ -184,20 +99,7 @@ namespace CSharpStringExercises.Classes
 		// Write unit tests for this function
 		public static string WriteVariableName(string input, VariableNameType caseNeeded = VariableNameType.CamelCase)
 		{
-			string[] words = input.Split();
-			for (int i = 0; i < words.Length; i++)
-			{
-				words[i] = words[i].ToLower();
-				if ((i > 0 && caseNeeded == VariableNameType.CamelCase) || caseNeeded == VariableNameType.PascalCase)
-				{
-					// make first letter a capital
-					StringBuilder newWord = new(words[i]);
-					newWord[0] = char.ToUpper(newWord[0]);
-					words[i] = newWord.ToString();
-				}
-			}
-			string delimiter = caseNeeded == VariableNameType.SnakeCase ? "_" : string.Empty;
-			return string.Join(delimiter, words);
+			throw new NotImplementedException();
 		}
 
 
@@ -224,48 +126,9 @@ namespace CSharpStringExercises.Classes
 		// War and Peace would take 79 key presses
 		// Hint: decompose the problem into sub programs
 		// Write unit tests for the problem. 
-
-		private const string Screen = "abcdefghijklmnopqrstuvwxyz_<";
-		private const int Width = 5;
-
 		public static int CalculateKeyPresses(List<string> words)
 		{
-			int count = 0;
-			char currentLetter = 'a';
-			string wordList = string.Join("_", words); // Add the spaces between words
-			wordList += "<"; // Add the enter to the end
-			wordList = wordList.ToLower(); // Make sure everything is lowercase
-			foreach (char letter in wordList)
-			{
-				count += CalculateLetterMoves(currentLetter, letter);
-				currentLetter = letter;
-			}
-			return count;
-		}
-
-		private static int CalculateLetterMoves(char startLetter, char endLetter)
-		{
-			int startIndex = Screen.IndexOf(startLetter);
-			int endIndex = Screen.IndexOf(endLetter);
-			// Number of moves is the row difference + the column difference + the key press
-			int numMoves = GetRowDifference(startIndex, endIndex) + GetColumnIndex(startIndex, endIndex) + 1;
-			return numMoves;
-		}
-
-		private static int GetRowDifference(int startIndex, int endIndex)
-		{
-			int startRow = startIndex / Width; // Integer division will give the row index
-			int endRow = endIndex / Width;
-			int rowDiff = Math.Abs(startRow - endRow);
-			return rowDiff;
-		}
-
-		private static int GetColumnIndex(int startIndex, int endIndex)
-		{
-			int startCol = startIndex % Width; // Finding the remainder will give the column index
-			int endCol = endIndex % Width;
-			int colDiff = Math.Abs(startCol - endCol);
-			return colDiff;
+			throw new NotImplementedException();
 		}
 	}
 }
